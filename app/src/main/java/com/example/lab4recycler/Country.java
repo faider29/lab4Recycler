@@ -5,12 +5,17 @@ package com.example.lab4recycler;
  * Created by Maxim Andrienko
  * 5/21/19
  */
-public class CountryList {
+public class Country {
 
     private String country;
 
     private String city;
 
+
+    public Country(String country, String city) {
+        this.country = country;
+        this.city = city;
+    }
 
     public String getCountry() {
         return country;
@@ -26,5 +31,10 @@ public class CountryList {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return country + city;
     }
 }

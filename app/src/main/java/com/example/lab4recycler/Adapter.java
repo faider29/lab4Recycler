@@ -1,12 +1,15 @@
 package com.example.lab4recycler;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -15,7 +18,13 @@ import android.widget.TextView;
  */
 public class Adapter extends RecyclerView.Adapter<Adapter.AdapterHolder> {
 
-    private CountryList mCountryList;
+    private List<Country> mCountryList;
+    private Context mContext;
+
+    public Adapter(Context context, List<Country> countryList){
+        mContext = context;
+        mCountryList = countryList;
+    }
 
 
     @NonNull
@@ -28,14 +37,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.AdapterHolder> {
     @Override
     public void onBindViewHolder(@NonNull AdapterHolder adapterHolder, int i) {
 
-        adapterHolder.setCountry(mCountryList.getCountry());
-        adapterHolder.setCity(mCountryList.getCity());
+        adapterHolder.setCountry(mCountryList.get(i).getCountry());
+        adapterHolder.setCity(mCountryList.get(i).getCity());
     }
 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mCountryList == null ? 0 : mCountryList.size();
     }
 
     public class AdapterHolder extends RecyclerView.ViewHolder {
@@ -50,12 +59,12 @@ public class Adapter extends RecyclerView.Adapter<Adapter.AdapterHolder> {
         }
 
 
-        public void setCity(EditText city) {
-            mCity = city;
+        public void setCity(String city) {
+            mCity.setText(city);
         }
 
-        public void setCountry(EditText country) {
-            mCountry = country;
+        public void setCountry(String country) {
+            mCountry.setText(country);
         }
 
     }
