@@ -61,10 +61,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.AdapterHolder> {
         public AdapterHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
-            mCountry = itemView.findViewById(R.id.et_country);
-            mCity = itemView.findViewById(R.id.et_city);
+            mCountry = itemView.findViewById(R.id.il_tv_country);
+            mCity = itemView.findViewById(R.id.it_tv_city);
         }
-
 
         public void setCity(String city) {
             mCity.setText(city);

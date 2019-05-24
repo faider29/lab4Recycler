@@ -11,6 +11,9 @@ public class Country {
 
     private String city;
 
+    private String id;
+
+
 
     public Country(String country, String city) {
         this.country = country;
@@ -36,5 +39,13 @@ public class Country {
     @Override
     public String toString() {
         return country + city;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
