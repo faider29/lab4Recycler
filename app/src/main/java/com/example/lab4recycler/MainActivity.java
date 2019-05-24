@@ -36,19 +36,23 @@ public class MainActivity extends AppCompatActivity {
 
         mCity = findViewById(R.id.et_city);
 
+        mRecyclerView = findViewById(R.id.rv_list);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
+        mRecyclerView.setAdapter(mAdapter);
+
         mButtonAdd = findViewById(R.id.btn_add);
         mButtonAdd.setOnClickListener((v)->{
 
-                mCountry.getText().toString();
-                mCity.getText().toString();
+            Country country = new Country(mCountry.getText().toString(),mCity.getText().toString());
+            mCountries.add(country);
+            mAdapter.notifyDataSetChanged();
+
             Log.d("BtnAdd", "BtnClick: " + mCountry.getText() + mCity.getText());
         });
 
 
-        mRecyclerView = findViewById(R.id.rv_list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.notifyDataSetChanged();
+
+
 
 
     }

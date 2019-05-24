@@ -3,6 +3,7 @@ package com.example.lab4recycler;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 /**
@@ -20,6 +22,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.AdapterHolder> {
 
     private List<Country> mCountryList;
     private Context mContext;
+
+    public static final String TAG = Adapter.class.getSimpleName();
 
     public Adapter(Context context, List<Country> countryList){
         mContext = context;
@@ -39,21 +43,24 @@ public class Adapter extends RecyclerView.Adapter<Adapter.AdapterHolder> {
 
         adapterHolder.setCountry(mCountryList.get(i).getCountry());
         adapterHolder.setCity(mCountryList.get(i).getCity());
+        Log.d(TAG, "onBindViewHolder: " + adapterHolder.mCity + adapterHolder.mCountry);
     }
 
 
     @Override
     public int getItemCount() {
-        return mCountryList == null ? 0 : mCountryList.size();
+        return mCountryList.size();
     }
 
     public class AdapterHolder extends RecyclerView.ViewHolder {
 
         private TextView mCountry;
         private TextView mCity;
+        private View mView;
 
         public AdapterHolder(@NonNull View itemView) {
             super(itemView);
+            mView = itemView;
             mCountry = itemView.findViewById(R.id.et_country);
             mCity = itemView.findViewById(R.id.et_city);
         }
